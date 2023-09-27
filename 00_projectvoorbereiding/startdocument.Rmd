@@ -1,0 +1,63 @@
+---
+date: "`r Sys.Date()`"
+title: "Startdocument Programma Discriminatie en Racisme"
+author: "`r Sys.getenv('USER')`"
+output: word_document
+---
+
+## Betrokkenen
+
+Team opdrachtgever:
+
+-   [Eva Verhaert](mailto:e.verhaert@minocw.nl)
+-   [Tess Rijk](mailto:t.b.rijk@minocw.nl)
+
+Datalab:
+
+-   Contactpersoon: 
+  - [Coen Eisma](mailto:c.w.eisma@minocw.nl)
+  - [Michelle Claus](mailto:m.w.m.claus@minocw.nl)
+
+## Probleemstelling
+
+Het Programma Racisme en Discriminatie wil een project in 3 fases doen:
+
+1. Onderzoek naar het inclusief taalgebruik binnen OCW;
+2. Een handreiking opstellen voor inclusief schrijven;
+3. Een interne communicatiecampagne opzetten.
+
+Het datalab gaat ondersteunen bij de eerste fase.
+
+## Doel
+
+Het doel voor het datalab van dit project is meervoudig:
+
+1.  Het verzamelen en inlezen van veschillende databronnen. In eerste instantie is gekozen om alleen stukken die vanuit het ministerie naar de Tweede Kamer zijn gestuurd te analyseren. Op een later moment gaat mogelijk gekeken worden naar interne nieuwsberichten ;
+2.  Het testen en selecteren van een methode om de teksten te analyseren op het gebruik van (on)gewenste woorden.
+
+## Product
+
+Na afronding van het project levert het datalab de volgende producten op:
+
+-   Een interactief dashboard van alle ingelezen databronnen, zodat medewerkers zelfstandig op bepaalde termen kan zoeken
+
+-   Een analyse op het gebruik van (on)gewenste woorden.
+
+
+## Haalbaarheid en risico
+
+Dit project is getypeerd als medium. Zolang zich geen grote technische belemmeringen voordoen is de haalbaarheid van dit project groot.
+
+## Data en privacy
+
+In eerste instantie wordt alleen gebruik gemaakt van aan de Tweede Kamer verstuurden openbare stukken. Er is dus geen sprake van privaygevoelige gegevens. 
+
+Mocht in de toekomst gekozen worden om andere databronnen te gebruiken - zoals interne nieuwsberichten of e-mails - dan wordt er opnieuw beoordeeld of er aanvullende maatregelen nodig zijn om de privacy te waardborgen.
+
+## Planning
+
+Afgesproken is dat het datalab zich technisch zal voorbereiden op het project, waarbij in ieder geval onderzocht wordt hoe de data ingelezen kan worden en hoe een eventuele analyse uitgevoerd kan worden. 
+
+De opdrachtgever zal een onderzoek doen naar een lijst van (on)gewenste woorden.
+
+Na oplevering zal er een evaluatie worden gepland waarin zowel het proces als de opgeleverde producten besproken zullen worden.
