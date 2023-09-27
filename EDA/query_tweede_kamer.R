@@ -32,11 +32,12 @@ inlezen_pdf <- function(url){
 url_docs_20_nu <- "https://gegevensmagazijn.tweedekamer.nl/OData/v4/2.0/Document?$filter=year(DatumOntvangst) ge 2020 and Soort eq 'Brief regering'"
 docs_20_nu <- get_odata(url_docs_20_nu)
 docs_20_nu_onderwijs <- docs_20_nu %>%
-  filter(if_any(everything(), ~ str_detect(., "Onderwijs|onderwijs|Cultuur|cultuur|Wetenschap|wetenschap")))
+  filter(if_any(everything(), ~ str_detect(., "Onderwijs|onderwijs|Cultuur|cultuur|Wetenschap|wetenschap"))) %>%
+  filter(ContentType == "application/pdf")
 
 
 test <- docs_20_nu_onderwijs %>%
-  head(10)
+  head(100)
 test_txt <- test %>%
   mutate(tekst = map(url_document, inlezen_pdf)) %>%
   # tidyr::unnest_wider(tekst) %>%
