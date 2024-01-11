@@ -29,7 +29,8 @@ inlezen_pdf <- function(url){
 
 
 # filteren op documenten in 2022 van regering + kernwoorden OCW, eerste 100
-url_docs_20_nu <- "https://gegevensmagazijn.tweedekamer.nl/OData/v4/2.0/Document?$filter=year(DatumOntvangst) ge 2020 and Soort eq 'Brief regering'"
+url_docs_20_nu <- "https://gegevensmagazijn.tweedekamer.nl/OData/v4/2.0/Document?$filter=year(DatumOntvangst) ge 2020 and (Soort eq 'Brief regering' or Soort eq 'Bijlage')"
+
 docs_20_nu <- get_odata(url_docs_20_nu)
 docs_20_nu_ocw <- docs_20_nu %>%
   filter(if_any(everything(), ~ str_detect(., "Onderwijs|onderwijs|Cultuur|cultuur|Wetenschap|wetenschap"))) %>%
