@@ -1,0 +1,105 @@
+---
+title: "Analyse ongewenste woorden"
+format: 
+  html:
+    embed-resources: true
+editor: visual
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(here)
+library(tidytext)
+library(reactablefmtr)
+library(crosstalk)
+
+documenten <- read_rds(here("datasets/documenten.RDS"))
+
+# Zoekwoorden inladen
+source(here("01_datapreparatie/inladen_zoekwoorden.R"))
+```
+
+## Inleiding
+
+Het doel van deze eerste analyse is om technisch te bepalen hoe de zoekwoordenlijst gematcht kan worden op de te onderzoeken documenten.
+
+De aangeleverde documenten zijn ingelezen, waarbij elke record in de dataset één paragraaf is. In totaal zijn dit `r nrow(documenten)` paragrafen.
+
+De zoekwoorden zijn in de kolommen `zoekwoord`, `voorkeur` en `vermijden` gesplitst op `,`, zodat er makkelijker op elk woord gematcht kan worden. 
+
+## Koppelen
+
+De tekst in de paragrafen wordt door middel van de functie `unnest_tokens` omgezet naar één woord per record. Deze wordt gematcht op de aanwezigheid in de zoekwoordenlijst.
+
+```{r}
+documenten_match <- documenten %>% 
+  ungroup() %>% 
+  unnest_tokens(input = text, output = "word") %>% 
+  left_join(zoekwoorden, by = join_by(word == zoekwoord)) %>% 
+  filter(!is.na(categorie)) %>% 
+  distinct()
+```
+We hebben nu een object `documenten_match` waarin alle woorden staan die gematcht kunnen worden aan een woord in het object `zoekwoorden`. 
+
+Nu kan deze lijst gekoppeld worden aan de oorspronkelijke dataset `documenten`:
+
+```{r}
+documenten_gekoppeld <- documenten %>% 
+  left_join(documenten_match)
+```
+
+## Tabel maken
+
+```{r}
+#| echo: false
+#| message: false
+data_tabel <- documenten_gekoppeld %>% 
+  ungroup() %>% 
+  select(-bestandsmap) %>% 
+  mutate(match = case_when(!is.na(word) ~ TRUE,
+                           TRUE ~ FALSE))
+
+data_shared <- SharedData$new(data_tabel)
+```
+
+
+```{r}
+#| echo: false
+#| message: false
+crosstalk::filter_checkbox(id = "filter_match", 
+                           label = "Match in zoekwoorden", 
+                           sharedData = data_shared,
+                           group = ~match)
+```
+
+
+
+```{r}
+#| column: screen-inset-shaded
+#| echo: false
+#| message: false
+data_shared %>% 
+  reactable(
+    searchable = TRUE,
+    filterable = TRUE,
+    theme = fivethirtyeight(),
+    columns = list(
+      match = colDef(show = F)
+    ),
+    language = reactableLang(
+      searchPlaceholder = "Zoeken...",
+      noData = "Geen resultaten",
+      pageInfo = "{rowStart} tot {rowEnd} van {rows} paragrafen",
+      pagePrevious = "\u276e",
+      pageNext = "\u276f",
+      
+      # Accessible labels for assistive technologies such as screen readers.
+      # These are already set by default, but don't forget to update them when
+      # changing visible text.
+      pagePreviousLabel = "Vorige",
+      pageNextLabel = "Volgende")
+  )
+  
+```
+
