@@ -26,7 +26,7 @@ Het doel van deze eerste analyse is om technisch te bepalen hoe de zoekwoordenli
 
 De aangeleverde documenten zijn ingelezen, waarbij elke record in de dataset één paragraaf is. In totaal zijn dit `r nrow(documenten)` paragrafen.
 
-De zoekwoorden zijn in de kolommen `zoekwoord`, `voorkeur` en `vermijden` gesplitst op `,`, zodat er makkelijker op elk woord gematcht kan worden. 
+De zoekwoorden zijn in de kolommen `zoekwoord`, `voorkeur` en `vermijden` gesplitst op `,`, zodat er makkelijker op elk woord gematcht kan worden.
 
 ## Koppelen
 
@@ -40,7 +40,8 @@ documenten_match <- documenten %>%
   filter(!is.na(categorie)) %>% 
   distinct()
 ```
-We hebben nu een object `documenten_match` waarin alle woorden staan die gematcht kunnen worden aan een woord in het object `zoekwoorden`. 
+
+We hebben nu een object `documenten_match` waarin alle woorden staan die gematcht kunnen worden aan een woord in het object `zoekwoorden`.
 
 Nu kan deze lijst gekoppeld worden aan de oorspronkelijke dataset `documenten`:
 
@@ -63,7 +64,6 @@ data_tabel <- documenten_gekoppeld %>%
 data_shared <- SharedData$new(data_tabel)
 ```
 
-
 ```{r}
 #| echo: false
 #| message: false
@@ -72,8 +72,6 @@ crosstalk::filter_checkbox(id = "filter_match",
                            sharedData = data_shared,
                            group = ~match)
 ```
-
-
 
 ```{r}
 #| column: screen-inset-shaded
@@ -102,4 +100,3 @@ data_shared %>%
   )
   
 ```
-
