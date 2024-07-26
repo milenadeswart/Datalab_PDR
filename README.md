@@ -9,7 +9,7 @@ Pipeline:
 - get_extra_sentences haalt extra zinnen op om te labellen, bijvoorbeeld woorden die nog niet vaak zijn gelabeld en zinnen die zijn gelabeld met een '4' (onzeker label).
 
 02_analyse bevat alle modellen die ik heb gebruikt.
-- BERT_train_cased_sentence_analysis.ipynb bevat het standaard BERT-model. Eerst wordt de dataset ingeladen en samengesteld. Daarna wordt de data geprept voor het model en worden er wat statistieken over de dataset gedeeld. Vervolgens wordt het model ingeladen en getraind. Er worden ook een paar analyses gedaan over de resultaten. Vervolgens wordt er een sentence analysis en een LIME-model uitgevoerd.
+- BERT_train_cased_sentence_analysis.ipynb bevat het standaard BERT-model en de overige modellen en is het grootste deel van mijn experimentatie. Eerst wordt de dataset ingeladen en samengesteld. Daarna wordt de data geprept voor het model en worden er wat statistieken over de dataset gedeeld. Vervolgens wordt het model ingeladen en getraind. Er worden ook een paar analyses gedaan over de resultaten. Vervolgens wordt er een sentence analysis en een LIME-model uitgevoerd.
 - GTP3.5.ipynb bevat het inladen van GPT3.5 en het testen op de dataset.
 - RobBERT_train_cased.ipynb bevat de overige BERT-modellen, zoals RobBERT en sentenceBERT. Hier wordt hetzelfde mee gedaan als met de gewone BERT-modellen, behalve dat de sentence analysis en LIME hier niet op worden toegepast.
 
