@@ -2,6 +2,9 @@ Dit is het README.md-bestand van een project van het datalab van OCW.
 
 Pipeline:
 01_datapreparatie bevat de code om de dataset samen te stellen.
+
+- inladen_zoekwoorden.R en inlezen_pdf_bestanden.R bevatten code om de documenten van de API van de Tweede Kamer op te halen en vervolgens te filteren op zoekwoorden Onderwijs, Cultuur of Wetenschap in de metadata. Vervolgens worden de pdf-bestanden omgezet in tekst en wordt er gefilterd op aanwezigheid van tenminste één zoekwoord uit de lijst. Deze code is ontwikkeld door Coen Eisma (https://www.coeneisma.nl/), senior data-analist en coördinator van het Datalab bij het Ministerie van Onderwijs, Cultuur en Wetenschap.
+
 - split_annotated_data_test.ipynb en merge_annotated_data_test.ipynb bevatten de code om de dataset te splitten en mergen voor en na het labellen.
 - build_dataset_dummy.ipynb en build_dataset_test.ipynb bevatten wat statistieken over de dataset.
 - build_inter_annotator_data.ipynb bevat de split van de data om te zorgen dat er genoeg data kan worden gelabeld om inter-annotator agreement over te berekenen.
